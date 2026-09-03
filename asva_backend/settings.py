@@ -3,6 +3,7 @@ from pathlib import Path
 
 import dj_database_url
 from dotenv import load_dotenv
+from django.templatetags.static import static
 
 
 load_dotenv()
@@ -34,6 +35,7 @@ NEXTJS_REVALIDATE_URL = os.getenv("NEXTJS_REVALIDATE_URL", "")
 NEXTJS_REVALIDATE_PATH_TEMPLATE = os.getenv("NEXTJS_REVALIDATE_PATH_TEMPLATE", "/{slug}")
 
 INSTALLED_APPS = [
+    "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -127,6 +129,9 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [
+    BASE_DIR / "asva_backend" / "static"
+]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -157,3 +162,48 @@ elif DEBUG:
 else:
     CORS_ALLOW_ALL_ORIGINS = False
 
+
+UNFOLD = {
+    "SITE_TITLE": "ASVA Site Admin",
+    "SITE_HEADER": " ",
+    "SITE_ICON": {
+        "dark": lambda request: static("images/asva-text-dark.svg"),
+        "light": lambda request: static('images/asva-text-light.svg')
+    },
+     "COLORS": {
+        "base": {
+            "50": "#F8FAFC",
+            "100": "#F1F5F9",
+            "200": "#E2E8F0",
+            "300": "#CBD5E1",
+            "400": "#94A3B8",
+            "500": "#64748B",
+            "600": "#475569",
+            "700": "#334155",
+            "800": "#1E293B",
+            "900": "#0F172A",
+            "950": "#020817",
+        },
+        "primary": {
+            "50": "#F0FDF4",
+            "100": "#DCFCE7",
+            "200": "#BBF7D0",
+            "300": "#86EFAC",
+            "400": "#4ADE80",
+            "500": "#22C55E",
+            "600": "#16A34A",
+            "700": "#15803D",
+            "800": "#166534",
+            "900": "#14532D",
+            "950": "#052E16",
+        },
+        "font": {
+            "subtle-light": "#64748B",
+            "subtle-dark": "#94A3B8",
+            "default-light": "#334155",
+            "default-dark": "#E2E8F0",
+            "important-light": "#020817",
+            "important-dark": "#F8FAFC",
+        },
+    }
+}

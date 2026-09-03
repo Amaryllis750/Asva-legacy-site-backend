@@ -1,10 +1,11 @@
 from django.contrib import admin
+from unfold import admin as UnfoldAdmin
 
 from .models import AdminNotification, PaymentClaim
 
 
 @admin.register(PaymentClaim)
-class PaymentClaimAdmin(admin.ModelAdmin):
+class PaymentClaimAdmin(UnfoldAdmin.ModelAdmin):
     list_display = ("id", "user", "reference_code", "amount", "status", "created_at")
     list_filter = ("status", "created_at")
     search_fields = ("reference_code", "user__username", "user__email")
@@ -40,7 +41,7 @@ class PaymentClaimAdmin(admin.ModelAdmin):
 
 
 @admin.register(AdminNotification)
-class AdminNotificationAdmin(admin.ModelAdmin):
+class AdminNotificationAdmin(UnfoldAdmin.ModelAdmin):
     list_display = ("id", "type", "reference_code", "claim", "is_read", "created_at")
     list_filter = ("type", "is_read", "created_at")
     search_fields = ("reference_code",)
