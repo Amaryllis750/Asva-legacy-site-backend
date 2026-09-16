@@ -16,3 +16,5 @@ services:
         sync: false
       - key: NEXTJS_ORIGINS
         value: https://asva-legacy-site-frontend.vercel.app
+      - key: DEBUG
+        value: false
