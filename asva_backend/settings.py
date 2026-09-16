@@ -16,7 +16,7 @@ DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() in ("true", "1", "yes")
 
 # Comma or whitespace separated. In production set DJANGO_DEBUG=false and list real hostnames.
 _raw_hosts = [h.strip() for h in os.getenv("DJANGO_ALLOWED_HOSTS", "").replace(",", " ").split() if h.strip()]
-ALLOWED_HOSTS: list[str] = _raw_hosts or ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS: list[str] = _raw_hosts or ["localhost", "127.0.0.1", os.getenv("RENDER_EXTERNAL_HOSTNAME")]
 # So local runserver / curl still work when DJANGO_ALLOWED_HOSTS lists only a public hostname.
 for _h in ("localhost", "127.0.0.1"):
     if _h not in ALLOWED_HOSTS:
