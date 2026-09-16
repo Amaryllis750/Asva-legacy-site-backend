@@ -7,7 +7,7 @@ services:
     startCommand: "gunicorn asva_backend.wsgi:application"
     envVars:
       - key: DATABASE_URL
-        value: postgresql://postgres:K2xgYADs0ln2RYFs@db.vtgflqzpdzabffgpamfz.supabase.co:5432/postgres
+        sync: false
       - key: ADMIN_EMAIL
         sync: false
       - key: ADMIN_PASSWORD
