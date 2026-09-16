@@ -15,4 +15,4 @@ services:
       - key: ADMIN_USERNAME
         sync: false
       - key: NEXTJS_ORIGINS
-        sync: https://asva-legacy-site-frontend.vercel.app
+        value: https://asva-legacy-site-frontend.vercel.app
